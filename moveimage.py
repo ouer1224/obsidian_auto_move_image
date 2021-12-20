@@ -6,6 +6,17 @@ import os
 import re
 
 logname=r'D:\note_base\obsidian\log.txt'
+enable_print = False;
+
+
+def no_output(self, *args, sep=' ', end='\n', file=None):
+    return;
+
+
+
+if (enable_print == False):
+    print = no_output;
+    print(f'test err')
 
 def getfilePath():
     # for i in sys.argv:
@@ -62,8 +73,12 @@ def moveImageToDest(imagePath, new_note_path, filename):
     new_path=new_note_path+'\\'+tmp;
     if(os.path.exists(new_path)!=True):
         os.makedirs(new_path)
-    
-    remove_file(imagePath, new_path, filename);
+    imagefile=imagePath+'\\'+filename;
+
+    if(os.path.isfile(imagefile)==True):
+        remove_file(imagePath, new_path, filename);
+    else:
+        print(f'err----no imagefile = {imagefile}')
     
 
 def readPathInfor():
@@ -81,6 +96,7 @@ def readPathInfor():
 
 
 if __name__ == '__main__':
+
     # 记录当前文件的路径到log.txt中, 第一行是source, 第二行是dest.
     oldfilename, oldfilepath=readPathInfor()
     oldfilepath=oldfilepath.replace('\n', '')

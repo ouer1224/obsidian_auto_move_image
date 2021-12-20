@@ -4,6 +4,17 @@ import sys
 import shutil
 import os
 
+enable_print = False;
+
+
+def no_output(self, *args, sep=' ', end='\n', file=None):
+    return;
+
+
+if (enable_print == False):
+    print = no_output;
+    print(f'test err')
+
 
 def getfilePath():
     # for i in sys.argv:
