@@ -1,2 +1,0 @@
-
-<% tp.user.pyMoveNoteImage() %>
